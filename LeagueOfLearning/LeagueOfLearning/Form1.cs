@@ -41,15 +41,11 @@ namespace LeagueOfLearning
             Stream resStream = response.GetResponseStream();
             StreamReader objreader = new StreamReader(resStream);
             string sresponse = "";
-            int count = 0;
             while (sresponse != null)
             {
-                count++;
                 sresponse = objreader.ReadLine();
                 if (sresponse != null)
                     txtOutput.AppendText(sresponse);
-
-
             }
         }
 
