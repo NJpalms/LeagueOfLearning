@@ -30,11 +30,32 @@ namespace LeagueOfLearning
         private void Riot_API_Request()
         {
             strAPI_Key = txtAPI_Key.Text;
+            
+
             string url = "https://na.api.pvp.net/api/lol/static-data/na/v1.2/champion/238?locale=en_US&champData=stats&api_key=" + strAPI_Key;
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
             Stream resStream = response.GetResponseStream();
+            StreamReader objreader = new StreamReader(resStream);
+            string sresponse = "";
+            int count = 0;
+            while (sresponse != null)
+            {
+                count++;
+                sresponse = objreader.ReadLine();
+                if (sresponse != null)
+                    txtOutput.AppendText(sresponse);
+
+
+            }
+        }
+
+        private void btnGo_Click(object sender, EventArgs e)
+        {
+            Riot_API_Request();
         }
     }
 }

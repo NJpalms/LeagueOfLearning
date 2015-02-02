@@ -30,6 +30,8 @@
         {
             this.txtAPI_Key = new System.Windows.Forms.TextBox();
             this.lblAPI_Key = new System.Windows.Forms.Label();
+            this.txtOutput = new System.Windows.Forms.TextBox();
+            this.btnGo = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtAPI_Key
@@ -48,11 +50,31 @@
             this.lblAPI_Key.TabIndex = 1;
             this.lblAPI_Key.Text = "API Key";
             // 
+            // txtOutput
+            // 
+            this.txtOutput.Location = new System.Drawing.Point(95, 103);
+            this.txtOutput.Multiline = true;
+            this.txtOutput.Name = "txtOutput";
+            this.txtOutput.Size = new System.Drawing.Size(300, 238);
+            this.txtOutput.TabIndex = 2;
+            // 
+            // btnGo
+            // 
+            this.btnGo.Location = new System.Drawing.Point(293, 47);
+            this.btnGo.Name = "btnGo";
+            this.btnGo.Size = new System.Drawing.Size(75, 23);
+            this.btnGo.TabIndex = 3;
+            this.btnGo.Text = "goooooo";
+            this.btnGo.UseVisualStyleBackColor = true;
+            this.btnGo.Click += new System.EventHandler(this.btnGo_Click);
+            // 
             // frmLOL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(578, 471);
+            this.Controls.Add(this.btnGo);
+            this.Controls.Add(this.txtOutput);
             this.Controls.Add(this.lblAPI_Key);
             this.Controls.Add(this.txtAPI_Key);
             this.Name = "frmLOL";
@@ -67,6 +89,8 @@
 
         private System.Windows.Forms.TextBox txtAPI_Key;
         private System.Windows.Forms.Label lblAPI_Key;
+        private System.Windows.Forms.TextBox txtOutput;
+        private System.Windows.Forms.Button btnGo;
     }
 }
 
