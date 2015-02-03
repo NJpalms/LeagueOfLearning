@@ -27,31 +27,31 @@ namespace LeagueOfLearning
         {
 
         }
-        private void Riot_API_Request()
+        private void Riot_Static_API_Request()
         {
             strAPI_Key = txtAPI_Key.Text;
-            
-
-            string url = "https://na.api.pvp.net/api/lol/static-data/na/v1.2/champion/238?locale=en_US&champData=stats&api_key=" + strAPI_Key;
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-
-            Stream resStream = response.GetResponseStream();
-            StreamReader objreader = new StreamReader(resStream);
-            string sresponse = "";
-            while (sresponse != null)
+            for(int Ndx = 1; Ndx <= 122; Ndx++)
             {
-                sresponse = objreader.ReadLine();
-                if (sresponse != null)
-                    txtOutput.AppendText(sresponse);
+                System.Threading.Thread.Sleep(1000);
+                string url = "https://na.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + Ndx.ToString() + "?locale=en_US&champData=stats&api_key=" + strAPI_Key;
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                Stream resStream = response.GetResponseStream();
+                StreamReader objreader = new StreamReader(resStream);
+                string sresponse = "";
+                while (sresponse != null)
+                {
+                    sresponse = objreader.ReadLine();
+                    if (sresponse != null)
+                        txtOutput.AppendText(sresponse);
+                }
+                txtOutput.AppendText("\r\n");
             }
+            
         }
-
         private void btnGo_Click(object sender, EventArgs e)
         {
-            Riot_API_Request();
+            Riot_Static_API_Request();
         }
     }
 }

@@ -52,15 +52,16 @@
             // 
             // txtOutput
             // 
-            this.txtOutput.Location = new System.Drawing.Point(95, 103);
+            this.txtOutput.Location = new System.Drawing.Point(27, 76);
             this.txtOutput.Multiline = true;
             this.txtOutput.Name = "txtOutput";
-            this.txtOutput.Size = new System.Drawing.Size(300, 238);
+            this.txtOutput.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtOutput.Size = new System.Drawing.Size(539, 383);
             this.txtOutput.TabIndex = 2;
             // 
             // btnGo
             // 
-            this.btnGo.Location = new System.Drawing.Point(293, 47);
+            this.btnGo.Location = new System.Drawing.Point(252, 47);
             this.btnGo.Name = "btnGo";
             this.btnGo.Size = new System.Drawing.Size(75, 23);
             this.btnGo.TabIndex = 3;
