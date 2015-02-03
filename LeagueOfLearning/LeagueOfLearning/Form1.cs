@@ -32,22 +32,25 @@ namespace LeagueOfLearning
             strAPI_Key = txtAPI_Key.Text;
             for(int Ndx = 1; Ndx <= 122; Ndx++)
             {
-                System.Threading.Thread.Sleep(1000);
-                string url = "https://na.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + Ndx.ToString() + "?locale=en_US&champData=stats&api_key=" + strAPI_Key;
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-                Stream resStream = response.GetResponseStream();
-                StreamReader objreader = new StreamReader(resStream);
-                string sresponse = "";
-                while (sresponse != null)
+                try
                 {
-                    sresponse = objreader.ReadLine();
-                    if (sresponse != null)
-                        txtOutput.AppendText(sresponse);
+                    System.Threading.Thread.Sleep(50);
+                    string url = "https://na.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + Ndx.ToString() + "?locale=en_US&champData=stats&api_key=" + strAPI_Key;
+                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+                    HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                    Stream resStream = response.GetResponseStream();
+                    StreamReader objreader = new StreamReader(resStream);
+                    string sresponse = "";
+                    while (sresponse != null)
+                    {
+                        sresponse = objreader.ReadLine();
+                        if (sresponse != null)
+                            txtOutput.AppendText(sresponse);
+                    }
+                    txtOutput.AppendText("\r\n");
                 }
-                txtOutput.AppendText("\r\n");
+                catch { }
             }
-            
         }
         private void btnGo_Click(object sender, EventArgs e)
         {
