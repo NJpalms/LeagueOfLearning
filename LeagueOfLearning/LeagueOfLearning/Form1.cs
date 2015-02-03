@@ -30,7 +30,7 @@ namespace LeagueOfLearning
         private void Riot_Static_API_Request()
         {
             strAPI_Key = txtAPI_Key.Text;
-            for(int Ndx = 1; Ndx <= 122; Ndx++)
+            for(int Ndx = 1; Ndx <= 200; Ndx++)
             {
                 try
                 {
@@ -47,6 +47,7 @@ namespace LeagueOfLearning
                         if (sresponse != null)
                             txtOutput.AppendText(sresponse);
                     }
+                    txtOutput.AppendText("\r\n");
                     txtOutput.AppendText("\r\n");
                 }
                 catch { }
