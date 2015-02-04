@@ -11,6 +11,7 @@ using System.Data.OleDb;
 using System.Collections;
 using System.Net;
 using System.IO;
+using System.Diagnostics;
 
 
 namespace LeagueOfLearning
@@ -34,7 +35,15 @@ namespace LeagueOfLearning
             {
                 try
                 {
-                    System.Threading.Thread.Sleep(50);
+                    Stopwatch stopwatch = Stopwatch.StartNew();
+                    while(true)
+                    {
+                        if(stopwatch.ElapsedMilliseconds >= 20)
+                        {
+                            break;
+                        }
+                    }
+
                     string url = "https://na.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + Ndx.ToString() + "?locale=en_US&champData=stats&api_key=" + strAPI_Key;
                     HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
                     HttpWebResponse response = (HttpWebResponse)request.GetResponse();
@@ -47,8 +56,7 @@ namespace LeagueOfLearning
                         if (sresponse != null)
                             txtOutput.AppendText(sresponse);
                     }
-                    txtOutput.AppendText("\r\n");
-                    txtOutput.AppendText("\r\n");
+                    txtOutput.AppendText("\r\n" + "\r\n");
                 }
                 catch { }
             }
