@@ -65,5 +65,39 @@ namespace LeagueOfLearning
         {
             Riot_Static_API_Request();
         }
+
+        private void btnSumid_Click(object sender, EventArgs e)
+        {
+            Riot_Get_Sum_ID(txtUsr.Text);
+        }
+        
+        private void Riot_Get_Sum_ID(string strUsrname)
+        {
+            char[] splChar = {':',',' };
+            strAPI_Key = txtAPI_Key.Text;
+            
+            try
+            {                
+                string url = "https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/" + strUsrname + "?api_key=" + strAPI_Key;
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                Stream resStream = response.GetResponseStream();
+                StreamReader objreader = new StreamReader(resStream);
+                string sresponse = "";
+                while (sresponse != null)
+                {
+                    sresponse = objreader.ReadLine();
+                    string[] strFull = sresponse.Split(splChar);
+                    string strSumid = strFull[2];
+                    
+                    if (sresponse != null)
+                        txtOutput.AppendText(strSumid);
+                }
+                txtOutput.AppendText("\r\n");
+                txtOutput.AppendText("\r\n");
+            }
+            catch { }
+
+        }
     }
 }
