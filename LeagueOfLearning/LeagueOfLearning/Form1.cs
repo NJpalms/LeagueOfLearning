@@ -96,7 +96,11 @@ namespace LeagueOfLearning
                 txtOutput.AppendText("\r\n");
                 txtOutput.AppendText("\r\n");
             }
-            catch { }
+            catch
+            {
+                txtOutput.AppendText("Invalid Username");
+
+            }
 
         }
     }
